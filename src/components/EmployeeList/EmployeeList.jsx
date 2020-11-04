@@ -1,8 +1,9 @@
 
+
 export default function EmployeeList(props) {
 
     return (
-        <table>
+        <table id="empData">
             <tr>
                 <th>id</th>
                 <th>name</th>
