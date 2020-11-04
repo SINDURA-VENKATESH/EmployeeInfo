@@ -1,7 +1,14 @@
+import { Component } from 'react';
+import { connect } from 'react-redux';
+import getEmployeeList from '../../redux/thunks/employeeDataThunk';
 import './EmployeeList.css';
 
-export default function EmployeeList(props) {
+class EmployeeList extends Component {
 
+    componentDidMount(){
+        this.props.getEmployeeList();
+    }
+    render(){
     return (
         <table id="empData">
             <tr>
@@ -11,7 +18,7 @@ export default function EmployeeList(props) {
                 <th>gender</th>
                 <th>email</th>
                 <th>phone number</th></tr>
-            {props.location.state.users.user && props.location.state.users.user.map(user =>
+            {this.props.users && this.props.users.data && this.props.users.data.map(user =>
                 <tr><td>{user.id}</td>
                     <td>{user.name}</td>
                     <td>{user.age}</td>
@@ -22,3 +29,17 @@ export default function EmployeeList(props) {
 
     );
 }
+}
+function mapStateToProps(state) {
+    return {
+        users: state.employeeList.users
+    }
+}
+function mapDispatchToProps(dispatch) {
+    return {
+        getEmployeeList: () => {
+            dispatch(getEmployeeList())
+        }
+    }
+}
+export default connect(mapStateToProps, mapDispatchToProps)(EmployeeList);

@@ -1,7 +1,7 @@
 import employeeData from '../../data/employeeData.json';
-function getEmployeeData(){
+function getEmployeeData(data){
     return {
-        type:'GET_EMPLOYEE_DATA',employeeData
+        type:'GET_EMPLOYEE_DATA',data
     }
 }
 export default getEmployeeData;

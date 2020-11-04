@@ -1,6 +1,5 @@
 {
   "name": "employeedetails",
-  "proxy": "http://localhost:3000/",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -18,6 +17,7 @@
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.0",
     "redux": "^4.0.5",
+    "redux-mock-store": "^1.5.4",
     "redux-saga": "^1.1.3",
     "redux-thunk": "^2.3.0",
     "styled-components": "^5.2.1",
@@ -28,7 +28,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "stubapi": "json-server db.json"
+    "stubapi": "json-server --watch src/db.json --port 4000"
   },
   "eslintConfig": {
     "extends": [
@@ -47,5 +47,13 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  }
+  },
+  "devDependencies": {
+    "enzyme": "^3.11.0",
+    "enzyme-adapter-react-16": "^1.15.5",
+    "enzyme-to-json": "^3.6.1"
+  },
+  "setupFiles": [
+    "./src/setupTests.js"
+  ]
 }

@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { connect } from 'react-redux';
 import validateUser from '../../redux/actions/loginValidationAction';
-import getEmployeeData from '../../redux/actions/employeeDataAction';
 import authentication from '../../authentication';
 import './Login.css';
 
@@ -24,12 +23,7 @@ class Login extends Component {
             if (this.props.isValid) {
                 document.getElementById("error_message").style.display = 'none';
                 await authentication.onLogin();
-                await this.props.getEmployeeData();
-                this.props.
-                    history.push({
-                        pathname: "/dashboard",
-                        state: { users: this.props.users, isValid: this.props.isValid }
-                    })
+                this.props.history.push('/dashboard');
             }
             else {
                 document.getElementById("error_message").style.display = 'block';
@@ -59,16 +53,12 @@ class Login extends Component {
 function mapStateToProps(state) {
     return {
         isValid: state.login.isValid,
-        users: state.employeeList.users
     }
 }
 function mapDispatchToProps(dispatch) {
     return {
         validateUser: (email, password) => {
             dispatch(validateUser(email, password))
-        },
-        getEmployeeData: () => {
-            dispatch(getEmployeeData())
         }
     }
 }

@@ -7,7 +7,7 @@ export default function employeeDataReducer(state= initialState, action){
         case "GET_EMPLOYEE_DATA" :
             return {
                 ...state,
-                users: action.employeeData
+                users: action.data
             }
         default: return state
     }
